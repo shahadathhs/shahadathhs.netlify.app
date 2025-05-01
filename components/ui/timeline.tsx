@@ -28,12 +28,12 @@ export const Timeline = () => {
       className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+      <div className="max-w-7xl mx-auto pt-20 px-4 md:px-8 lg:px-10">
         <h2 className="text-2xl md:text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl">
           Professional Timeline
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-base max-w-lg">
-          With over a year and a half in tech, here are highlights from my
+          With almost a year and a half in tech, here are highlights from my
           journey. I&apos;m always eager for new challenges and collaborations—feel
           free to reach out!
         </p>
