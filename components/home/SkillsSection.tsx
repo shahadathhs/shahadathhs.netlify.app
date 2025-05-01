@@ -9,6 +9,7 @@ import {
   IconRouteAltLeft,
   IconTerminal2,
 } from "@tabler/icons-react";
+import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 
 export default function SkillsSection() {
   const skills = [
@@ -59,14 +60,35 @@ export default function SkillsSection() {
     },
   ];
 
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
-      {/* skills section into */}
+  const words = [
+    {
+      text: "Know",
+    },
+    {
+      text: "about",
+    },
+    {
+      text: "my",
+    },
+    {
+      text: "SKILLS",
+      className: "text-blue-500 dark:text-blue-500",
+    },
+  ];
 
-      {/* skills */}
-      {skills.map((skill, index) => (
-        <Skill key={skill.title} {...skill} index={index} />
-      ))}
+  return (
+    <div className="my-10">
+      {/* skills section into */}
+      <div className="flex flex-col items-center justify-center ">
+        <TypewriterEffectSmooth words={words} />
+      </div>
+
+      {/* skill */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
+        {skills.map((skill, index) => (
+          <Skill key={skill.title} {...skill} index={index} />
+        ))}
+      </div>
     </div>
   );
 }
