@@ -1,87 +1,103 @@
 "use client";
 
-import { LampContainer } from "../ui/lamp";
 import { motion } from "motion/react";
-import Link from "next/link";
-import { Typewriter } from "react-simple-typewriter";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <LampContainer>
-      <motion.h1
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 1.3,
-          ease: "easeInOut",
-        }}
-        className="mt-4 bg-gradient-to-br from-slate-300 to-slate-500 
-      py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-white md:text-5xl"
-      >
-        Hi, I am
-      </motion.h1>
-
-      <motion.h1
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 1,
-          duration: 2.2,
-          ease: "easeInOut",
-        }}
-        className="mt-2 bg-gradient-to-br from-slate-300 to-slate-500 
-      py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-white md:text-5xl"
-      >
-        Shahadath Hossen Sajib
-      </motion.h1>
-
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 1.7,
-          duration: 3.1,
-          ease: "easeInOut",
-        }}
-        className="mt-2 py-4 text-center text-4xl font-medium tracking-tight text-white md:text-5xl"
-      >
-        <Typewriter
-          words={["Junior Backend Developer", "MERN Stack Developer"]}
-          loop={Infinity}
-          cursor
-          typeSpeed={100}
-          deleteSpeed={50}
-          delaySpeed={1000}
-        />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 2.4,
-          duration: 4,
-          ease: "easeInOut",
-        }}
-        className="mt-6 flex justify-center"
-      >
-        <Button
-          asChild
-          variant="outline"
-          size="lg"
-          className="hover:scale-105 transition-all duration-300"
+    <div className="relative mx-auto my-10 flex max-w-7xl flex-col items-center justify-center">
+      <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
+        <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+      </div>
+      <div className="absolute inset-y-0 right-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
+        <div className="absolute h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+      </div>
+      <div className="absolute inset-x-0 bottom-0 h-px w-full bg-neutral-200/80 dark:bg-neutral-800/80">
+        <div className="absolute mx-auto h-px w-40 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+      </div>
+      <div className="px-4 py-10 md:py-20">
+        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
+          {"Hey there, I'm Sajib".split(" ").map((word, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1,
+                ease: "easeInOut",
+              }}
+              className="mr-2 inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </h1>
+        <motion.p
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.3,
+            delay: 0.8,
+          }}
+          className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          <Link
-            target="_blank"
-            href="https://drive.google.com/file/d/1dtZCEgZyof-qrUreeVpXDlOovosegpuf/view"
-            rel="noopener noreferrer"
-          >
-            View My Resume
-          </Link>
-        </Button>
-      </motion.div>
-    </LampContainer>
+          I am a junior backend developer with a passion for creating efficient
+          and scalable web applications.
+        </motion.p>
+
+        {/* cta buttons */}
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.3,
+            delay: 1,
+          }}
+          className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
+        >
+          <button className="w-60 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+            <Link href="/projects">See My Work</Link>
+          </button>
+          <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
+            <Link href="/contact">Contact Me</Link>
+          </button>
+        </motion.div>
+
+        {/* Resume */}
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.3,
+            delay: 1,
+          }}
+          className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
+        >
+          <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
+            <Link
+              target="_blank"
+              href="https://drive.google.com/file/d/1dtZCEgZyof-qrUreeVpXDlOovosegpuf/view"
+              rel="noopener noreferrer"
+            >
+              View My Resume
+            </Link>
+          </button>
+        </motion.div>
+      </div>
+    </div>
   );
 }

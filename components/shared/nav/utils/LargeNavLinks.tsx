@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 
 export const LargeNavLinks = () => {
   return (
-    <div className="flex text-white items-center space-x-2 lg:space-x-3 mr-6">
+    <div className="flex items-center space-x-2 lg:space-x-3 mr-6">
       {navLinks.map((link) => (
         <ActiveLink key={nanoid()} href={link.link}>
           {link.title}
