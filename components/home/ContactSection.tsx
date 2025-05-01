@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { Github, Linkedin, Mail, Copy, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,9 +8,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-// import { useToast } from "@/hooks/use-toast"
 import { sendEmail } from "@/app/actions/email";
 import { toast } from "sonner";
+import { BorderBeam } from "../magicui/border-beam";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -76,17 +75,20 @@ export default function ContactSection() {
         icon: "❌",
         description: "Please try again later.",
       });
+      console.error("Error sending email:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-12">
+    <div className="grid md:grid-cols-2 relative overflow-hidden mb-10 items-center gap-12 p-8 lg:p-12 border rounded">
+      {/* info */}
       <div className="space-y-8">
         <h2 className="text-2xl font-semibold">Connect With Me</h2>
 
         <div className="space-y-6">
+          {/* github */}
           <div className="flex items-center space-x-4">
             <div className="bg-primary/10 p-3 rounded-full">
               <Github className="h-6 w-6 text-primary" />
@@ -104,6 +106,7 @@ export default function ContactSection() {
             </div>
           </div>
 
+          {/* linkedin */}
           <div className="flex items-center space-x-4">
             <div className="bg-primary/10 p-3 rounded-full">
               <Linkedin className="h-6 w-6 text-primary" />
@@ -121,13 +124,14 @@ export default function ContactSection() {
             </div>
           </div>
 
+          {/* email */}
           <div className="flex items-center space-x-4">
             <div className="bg-primary/10 p-3 rounded-full">
               <Mail className="h-6 w-6 text-primary" />
             </div>
             <div className="flex-1">
               <h3 className="font-medium">Email</h3>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
                 <a
                   href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`}
                   target="_blank"
@@ -152,18 +156,9 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-
-        <Card>
-          <CardContent className="p-6">
-            <h3 className="text-lg font-medium mb-2">Direct Contact</h3>
-            <p className="text-muted-foreground mb-4">
-              Feel free to reach out directly through any of the channels above
-              or use the contact form to send me a message.
-            </p>
-          </CardContent>
-        </Card>
       </div>
 
+      {/* form */}
       <div>
         <h2 className="text-2xl font-semibold mb-6">Send a Message</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -222,6 +217,14 @@ export default function ContactSection() {
           </Button>
         </form>
       </div>
+
+      {/* border beam */}
+      <BorderBeam
+        duration={40}
+        size={300}
+        reverse
+        className="from-transparent via-green-500 to-transparent"
+      />
     </div>
   );
 }
