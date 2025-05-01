@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { sendEmail } from "@/app/actions/email";
 import { toast } from "sonner";
 import { BorderBeam } from "../magicui/border-beam";
+import { TypingAnimation } from "../magicui/typing-animation";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -84,8 +85,10 @@ export default function ContactSection() {
   return (
     <div className="grid md:grid-cols-2 relative overflow-hidden mb-10 items-center gap-12 p-8 lg:p-12 border rounded">
       {/* info */}
-      <div className="space-y-8">
-        <h2 className="text-2xl font-semibold">Connect With Me</h2>
+      <div className="space-y-8 max-w-[450px]">
+        <h2 className="text-3xl font-semibold">
+          <TypingAnimation>Get in touch</TypingAnimation>
+        </h2>
 
         <div className="space-y-6">
           {/* github */}
@@ -159,63 +162,79 @@ export default function ContactSection() {
       </div>
 
       {/* form */}
-      <div>
-        <h2 className="text-2xl font-semibold mb-6">Send a Message</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
-            <Input
-              id="name"
-              name="name"
-              placeholder="Your name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
+      <div className="w-full flex justify-end">
+        <Card className="w-full relative overflow-hidden max-w-[450px]">
+          <CardContent>
+            <h2 className="text-2xl font-semibold mb-6">Send a Message</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Your email address"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Your email address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="subject">Subject</Label>
-            <Input
-              id="subject"
-              name="subject"
-              placeholder="Message subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-            />
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="subject">Subject</Label>
+                <Input
+                  id="subject"
+                  name="subject"
+                  placeholder="Message subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="message">Message</Label>
-            <Textarea
-              id="message"
-              name="message"
-              placeholder="Your message"
-              rows={5}
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="message">Message</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder="Your message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </Button>
-        </form>
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
+          </CardContent>
+
+          <BorderBeam
+            duration={6}
+            size={400}
+            className="from-transparent via-red-500 to-transparent"
+          />
+          <BorderBeam
+            duration={6}
+            delay={3}
+            size={400}
+            className="from-transparent via-blue-500 to-transparent"
+          />
+        </Card>
       </div>
 
       {/* border beam */}
