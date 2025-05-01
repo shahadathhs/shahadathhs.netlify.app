@@ -35,7 +35,7 @@ export default function Error({
           Something went wrong
         </h1>
         <p className="text-muted-foreground mb-8">
-          Sorry, an unexpected error has occurred. I'm working on fixing the
+          Sorry, an unexpected error has occurred. I am working on fixing the
           issue.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
