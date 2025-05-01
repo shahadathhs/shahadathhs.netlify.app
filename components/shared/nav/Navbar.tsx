@@ -33,9 +33,9 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "sticky top-4 z-[9999]  transition-all transform ease-in-out duration-500 border rounded-xl p-2 lg:p-4 m-4",
+        "absolute top-0 left-0 right-0 z-[9999] bg-slate-950 transition-all transform ease-in-out duration-500 rounded-xl p-2 lg:p-4 m-3",
         scrolled
-          ? "scale-90 bg-primary-foreground border-primary-foreground"
+          ? "scale-90"
           : ""
       )}
     >

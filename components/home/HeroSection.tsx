@@ -2,6 +2,7 @@
 
 import { LampContainer } from "../ui/lamp";
 import { motion } from "motion/react";
+import Link from "next/link";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function HeroSection() {
@@ -46,7 +47,7 @@ export default function HeroSection() {
         className="mt-2 py-4 text-center text-3xl font-medium tracking-tight text-white md:text-5xl"
       >
         <Typewriter
-          words={["A Junior Backend Developer", "MERN Stack Developer"]}
+          words={["Junior Backend Developer", "MERN Stack Developer"]}
           loop={Infinity}
           cursor
           typeSpeed={100}
@@ -65,14 +66,15 @@ export default function HeroSection() {
         }}
         className="mt-6 flex justify-center"
       >
-        <a
+        <Link
+          target="_blank"
           href="https://drive.google.com/uc?export=download&id=1btsi4NyrA4ziPfLaQrvtB_EDKyFoKz9w"
           rel="noopener noreferrer"
           className="inline-block rounded-lg bg-gradient-to-r from-indigo-400 to-purple-400
         px-6 py-3 font-semibold text-white text-2xl transition-all duration-300 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300"
         >
-          Download My Resume
-        </a>
+          View My Resume
+        </Link>
       </motion.div>
     </LampContainer>
   );
