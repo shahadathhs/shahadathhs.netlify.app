@@ -1,5 +1,227 @@
+"use client";
+
+import type React from "react";
+
+import { useState } from "react";
+import { Github, Linkedin, Mail, Copy, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
+// import { useToast } from "@/hooks/use-toast"
+import { sendEmail } from "@/app/actions/email";
+import { toast } from "sonner";
+
 export default function ContactSection() {
+  const [copied, setCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const email = "shahadathhossensajib732@gmail.com";
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    toast.success("Email copied to clipboard", {
+      icon: "📋",
+      duration: 2000,
+      description: "You can now paste it anywhere you need.",
+    });
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const result = await sendEmail(formData);
+
+      if (result.success) {
+        toast.success("Message sent successfully!", {
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        toast.error("Error sending message", {
+          icon: "❌",
+          description: result.error || "Please try again later.",
+        });
+      }
+    } catch (error) {
+      toast.error("Something went wrong", {
+        icon: "❌",
+        description: "Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div>ContactSection</div>
-  )
+    <div className="grid md:grid-cols-2 gap-12">
+      <div className="space-y-8">
+        <h2 className="text-2xl font-semibold">Connect With Me</h2>
+
+        <div className="space-y-6">
+          <div className="flex items-center space-x-4">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <Github className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <h3 className="font-medium">GitHub</h3>
+              <a
+                href="https://github.com/shahadathhs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                github.com/shahadathhs
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <Linkedin className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <h3 className="font-medium">LinkedIn</h3>
+              <a
+                href="https://www.linkedin.com/in/shahadathhs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                linkedin.com/in/shahadathhs
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <Mail className="h-6 w-6 text-primary" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-medium">Email</h3>
+              <div className="flex items-center justify-between">
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline text-sm md:text-base truncate max-w-[200px] md:max-w-[250px]"
+                >
+                  {email}
+                </a>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={copyToClipboard}
+                  className="ml-2"
+                >
+                  {copied ? (
+                    <CheckCircle className="h-4 w-4" />
+                  ) : (
+                    <Copy className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Card>
+          <CardContent className="p-6">
+            <h3 className="text-lg font-medium mb-2">Direct Contact</h3>
+            <p className="text-muted-foreground mb-4">
+              Feel free to reach out directly through any of the channels above
+              or use the contact form to send me a message.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-semibold mb-6">Send a Message</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              name="name"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Your email address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="subject">Subject</Label>
+            <Input
+              id="subject"
+              name="subject"
+              placeholder="Message subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="message">Message</Label>
+            <Textarea
+              id="message"
+              name="message"
+              placeholder="Your message"
+              rows={5}
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Send Message"}
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
 }
