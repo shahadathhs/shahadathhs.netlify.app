@@ -10,76 +10,56 @@ import {
   IconTerminal2,
 } from "@tabler/icons-react";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+import { words } from "@/constant/skillsData";
 
 export default function SkillsSection() {
   const skills = [
     {
-      title: "Built for developers",
-      description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
+      title: "Languages",
       icon: <IconTerminal2 />,
+      description: "Javascript, Typescript",
     },
     {
-      title: "Ease of use",
-      description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
+      title: "Backend",
       icon: <IconEaseInOut />,
+      description: "Nodejs, Express",
     },
     {
-      title: "Pricing like no other",
-      description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <IconCurrencyDollar />,
-    },
-    {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
-    },
-    {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
-      icon: <IconRouteAltLeft />,
-    },
-    {
-      title: "24/7 Customer Support",
-      description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
+      title: "Databases",
       icon: <IconHelp />,
+      description: "MongoDB, Mongoose",
     },
     {
-      title: "Money back guarantee",
-      description:
-        "If you donot like EveryAI, we will convince you to like us.",
+      title: "Testing",
+      icon: <IconCurrencyDollar />,
+      description: "Jest, Supertest",
+    },
+    {
+      title: "Tools",
+      icon: <IconRouteAltLeft />,
+      description: "Git, VS Code, Postman",
+    },
+    {
+      title: "Monorepo Tools",
       icon: <IconAdjustmentsBolt />,
+      description: "Turborepo, Nx",
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
+      title: "Currently Learning",
+      icon: <IconCloud />,
+      description: "Postgres, Prisma",
+    },
+    {
+      title: "Package Manager",
       icon: <IconHeart />,
-    },
-  ];
-
-  const words = [
-    {
-      text: "Know",
-    },
-    {
-      text: "about",
-    },
-    {
-      text: "my",
-    },
-    {
-      text: "SKILLS",
-      className: "text-blue-500 dark:text-blue-500",
+      description: "NPM, PNPM",
     },
   ];
 
   return (
     <div className="my-10">
       {/* skills section into */}
-      <div className="flex flex-col items-center justify-center ">
+      <div className="flex flex-col items-center justify-center">
         <TypewriterEffectSmooth words={words} />
       </div>
 
