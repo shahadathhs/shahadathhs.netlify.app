@@ -1,7 +1,7 @@
 "use server";
 
 import { Blog, BlogDocument } from "@/lib/models";
-import { slugify } from "@/lib/utils";
+import { serialize, slugify } from "@/lib/utils";
 import dbConnect from "./dbConnect";
 import { FilterQuery } from "mongoose";
 
@@ -39,17 +39,19 @@ export async function getAllBlogs(query = "", category = "") {
 export async function getBlogBySlug(slug: string) {
   await dbConnect();
 
-  const blog = await Blog.findOne({ slug }).lean();
+  const blog = await Blog.findOne({ slug });
 
-  return blog;
+  if (!blog) return null;
+
+  return blog?.toObject();
 }
 
 export async function getBlogById(id: string) {
   await dbConnect();
 
-  const blog = await Blog.findById(id).lean();
+  const blog = await Blog.findById(id);
 
-  return blog;
+  return serialize(blog);
 }
 
 export async function createBlog(blogData: {
@@ -70,9 +72,9 @@ export async function createBlog(blogData: {
     updatedAt: new Date(),
   });
 
-  await blog.save();
+  const result = await blog.save();
 
-  return blog;
+  return serialize(result);
 }
 
 export async function updateBlog(
@@ -99,7 +101,7 @@ export async function updateBlog(
     { new: true }
   );
 
-  return updatedBlog;
+  return serialize(updatedBlog);
 }
 
 export async function deleteBlog(id: string) {

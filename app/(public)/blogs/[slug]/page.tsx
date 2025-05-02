@@ -77,7 +77,10 @@ export default async function BlogPage({
           />
         </div>
 
-        <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+        <div
+          className="prose prose-stone dark:prose-invert"
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        />
       </article>
     </main>
   );

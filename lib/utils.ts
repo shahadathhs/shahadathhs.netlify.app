@@ -11,3 +11,9 @@ export function slugify(str: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "")
 }
+
+export function serialize<T>(doc: T): T {
+  // JSON.stringify will call .toJSON() on Dates and ObjectIds,
+  // then JSON.parse will turn everything back into primitives.
+  return JSON.parse(JSON.stringify(doc));
+}
