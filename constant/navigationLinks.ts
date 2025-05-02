@@ -13,7 +13,6 @@ export const authLinks = [
 
 // * footer
 export const quickLinks = [
-  { title: "Home", link: "/" },
   { title: "Contact", link: "/contact" },
   { title: "Blogs", link: "/blogs" },
   { title: "Projects", link: "/projects" },
