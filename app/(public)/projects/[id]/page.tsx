@@ -1,38 +1,18 @@
+"use client";
+
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { projects } from "@/constant/projectData";
 import ImageSlider from "@/components/shared/ImageSlider";
 
-interface ProjectPageProps {
-  params: {
-    id: string;
-  };
-}
+export default function ProjectPage() {
+  const { id } = useParams();
+  const project = projects.find((p) => p.id === id);
 
-export function generateMetadata({ params }: ProjectPageProps) {
-  const project = projects.find((p) => p.id === params.id);
-
-  if (!project) {
-    return {
-      title: "Project Not Found",
-    };
-  }
-
-  return {
-    title: `${project.title} | Portfolio`,
-    description: project.shortDescription,
-  };
-}
-
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projects.find((p) => p.id === params.id);
-
-  if (!project) {
-    notFound();
-  }
+  if (!project) notFound();
 
   return (
     <main className="my-10">
