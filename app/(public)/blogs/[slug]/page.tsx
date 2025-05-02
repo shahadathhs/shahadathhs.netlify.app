@@ -7,14 +7,12 @@ import { getBlogBySlug } from "@/lib/blog-service";
 import { Blog } from "@/lib/models";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams: () => URLSearchParams;
+  params: Promise<{ slug: string }>;
 }) {
-  const params = (await searchParams) as unknown as {
-    slug: string;
-  };
-  const blog = (await getBlogBySlug(params.slug)) as unknown as Blog;
+  const { slug } = await params;
+  const blog = (await getBlogBySlug(slug)) as unknown as Blog;
 
   if (!blog) {
     return {
@@ -30,14 +28,12 @@ export async function generateMetadata({
 }
 
 export default async function BlogPage({
-  searchParams,
+  params,
 }: {
-  searchParams: () => URLSearchParams;
+  params: Promise<{ slug: string }>;
 }) {
-  const params = (await searchParams) as unknown as {
-    slug: string;
-  };
-  const blog = (await getBlogBySlug(params.slug)) as unknown as Blog;
+  const { slug } = await params;
+  const blog = (await getBlogBySlug(slug)) as unknown as Blog;
 
   if (!blog) notFound();
 

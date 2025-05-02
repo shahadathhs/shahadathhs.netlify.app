@@ -10,16 +10,11 @@ export const metadata = {
 };
 
 export default async function BlogsPage({
-  searchParams,
+  params,
 }: {
-  searchParams: () => URLSearchParams;
+  params: Promise<{ query: string; category: string }>;
 }) {
-  const params = (await searchParams) as unknown as {
-    query: string;
-    category: string;
-  };
-  const query = params.query || "";
-  const category = params.category || "";
+  const { query, category } = await params;
 
   return (
     <main className="py-10">

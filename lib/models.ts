@@ -22,6 +22,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 export type Blog = {
+  _id?: string;
   title: string;
   slug: string;
   excerpt: string;

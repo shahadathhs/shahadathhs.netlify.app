@@ -3,10 +3,12 @@ import { getBlogById, updateBlog, deleteBlog } from "@/lib/blog-service";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  { params }: { params: any }
 ) {
+  const { id } = await params;
   try {
-    const blog = await getBlogById(params.id);
+    const blog = await getBlogById(id);
 
     if (!blog) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
@@ -24,11 +26,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  { params }: { params: any }
 ) {
+  const { id } = await params;
   try {
     const body = await request.json();
-    const updatedBlog = await updateBlog(params.id, body);
+    const updatedBlog = await updateBlog(id, body);
 
     return NextResponse.json(updatedBlog);
   } catch (error) {
@@ -42,10 +46,12 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  { params }: { params: any }
 ) {
+  const { id } = await params;
   try {
-    await deleteBlog(params.id);
+    await deleteBlog(id);
 
     return NextResponse.json({ success: true });
   } catch (error) {

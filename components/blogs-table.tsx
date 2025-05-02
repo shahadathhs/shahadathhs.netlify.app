@@ -33,6 +33,7 @@ import {
 import { useBlogs } from "@/lib/use-blogs";
 import { deleteBlog } from "@/lib/blog-service";
 import { toast } from "sonner";
+import { Blog } from "@/lib/models";
 
 export function BlogsTable() {
   const { blogs, isLoading, mutate } = useBlogs();
@@ -98,7 +99,7 @@ export function BlogsTable() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {blogs.map((blog) => (
+            {blogs.map((blog: Blog & { _id: string }) => (
               <TableRow key={blog._id}>
                 <TableCell className="font-medium">{blog.title}</TableCell>
                 <TableCell>{blog.category}</TableCell>

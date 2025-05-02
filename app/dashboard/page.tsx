@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { getUserStats } from "@/lib/blog-service"
 import { FileText, Eye, FolderTree, Clock } from "lucide-react"
+import { nanoid } from "nanoid"
 
 export default async function DashboardPage() {
   const stats = await getUserStats()
@@ -65,7 +66,7 @@ export default async function DashboardPage() {
             <div className="space-y-4">
               {stats.recentPosts.length > 0 ? (
                 stats.recentPosts.map((post) => (
-                  <div key={post._id} className="flex items-center gap-4">
+                  <div key={nanoid()} className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-md bg-muted flex items-center justify-center">
                       <FileText className="h-6 w-6 text-muted-foreground" />
                     </div>

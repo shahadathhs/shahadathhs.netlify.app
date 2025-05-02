@@ -1,13 +1,17 @@
-import { notFound } from "next/navigation"
-import { BlogForm } from "@/components/blog-form"
-import { getBlogById } from "@/lib/blog-service"
+import { notFound } from "next/navigation";
+import { BlogForm } from "@/components/blog-form";
+import { getBlogById } from "@/lib/blog-service";
+import { Blog } from "@/lib/models";
 
-export default async function EditBlogPage({ params }: { params: { id: string } }) {
-  const blog = await getBlogById(params.id)
+export default async function EditBlogPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const blog = (await getBlogById(id)) as unknown as Blog & { _id: string };
 
-  if (!blog) {
-    notFound()
-  }
+  if (!blog) notFound();
 
   return (
     <div className="space-y-6">
@@ -17,5 +21,5 @@ export default async function EditBlogPage({ params }: { params: { id: string } 
       </div>
       <BlogForm blog={blog} />
     </div>
-  )
+  );
 }
