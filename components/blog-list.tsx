@@ -35,7 +35,7 @@ export async function BlogList({
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {blogs.map((blog) => (
-        <Card key={nanoid()} className="flex flex-col overflow-hidden">
+        <Card key={nanoid()} className="flex flex-col overflow-hidden pt-0">
           <div className="relative h-48 w-full">
             <Image
               src={blog.thumbnailUrl || "/placeholder.svg?height=200&width=400"}
@@ -53,7 +53,7 @@ export async function BlogList({
                 {blog.category}
               </span>
             </div>
-            <CardTitle className="line-clamp-2">{blog.title}</CardTitle>
+            <CardTitle className="line-clamp-2 pt-2">{blog.title}</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="line-clamp-3 text-muted-foreground">{blog.excerpt}</p>

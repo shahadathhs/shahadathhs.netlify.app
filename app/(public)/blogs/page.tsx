@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { BlogList } from "@/components/blog-list";
-import { BlogSearch } from "@/components/blog-search";
-import { CategoryFilter } from "@/components/category-filter";
+// import { BlogSearch } from "@/components/blog-search";
+// import { CategoryFilter } from "@/components/category-filter";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata = {
@@ -25,10 +25,10 @@ export default async function BlogsPage({
             Browse through our collection of blog posts
           </p>
         </div>
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        {/* <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <BlogSearch />
           <CategoryFilter />
-        </div>
+        </div> */}
         <Suspense
           fallback={
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
