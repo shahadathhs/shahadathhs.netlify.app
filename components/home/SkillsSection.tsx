@@ -12,6 +12,7 @@ import {
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import { words } from "@/constant/skillsData";
 import { Badge } from "../ui/badge";
+import { BorderBeam } from "../magicui/border-beam";
 
 export default function SkillsSection() {
   // 1) change description to string[]
@@ -42,8 +43,8 @@ export default function SkillsSection() {
   };
 
   return (
-    <div className="my-10">
-      <div className="flex flex-col items-center text-xl justify-center">
+    <div className="my-10 2xl:border rounded-md relative overflow-clip">
+      <div className="flex flex-col items-center text-xl 2xl:mt-10 justify-center">
         <TypewriterEffectSmooth words={words} />
       </div>
 
@@ -58,6 +59,13 @@ export default function SkillsSection() {
           />
         ))}
       </div>
+
+      <BorderBeam
+        duration={40}
+        size={300}
+        reverse
+        className="from-transparent via-green-500 to-transparent opacity-0 2xl:opacity-100"
+      />
     </div>
   );
 }
