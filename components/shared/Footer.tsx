@@ -25,11 +25,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t">
+    <footer className="relative">
+      <div className="absolute inset-x-0 top-1 h-px w-full bg-neutral-200/80 dark:bg-neutral-800/80">
+        <div className="absolute mx-auto h-px w-full bg-gradient-to-r from-transparent via-stone-500 to-transparent" />
+      </div>
       <div className="container mx-auto py-12">
-        <div className="flex flex-col md:flex-row justify-between gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           {/* info */}
-          <div className="space-y-4 max-w-lg">
+          <div className="space-y-4 max-w-md">
             {/* Logo and Description */}
             <Link href="/" className="font-bold italic text-xl">
               Shahadath Hossen Sajib
@@ -41,11 +44,13 @@ export default function Footer() {
             </p>
 
             {/* Social Links */}
-            <SocialLinks/>
+            <SocialLinks />
 
             {/* email */}
             <div className="flex items-center space-x-2">
-              <p className="text-sm text-muted-foreground">{email}</p>
+              <p className="text-sm text-muted-foreground truncate max-w-[180px] xl:max-w-[300px]">
+                {email}
+              </p>
               <Button
                 variant="ghost"
                 size="icon"
@@ -61,53 +66,53 @@ export default function Footer() {
               </Button>
             </div>
           </div>
+          <div className="flex flex-row justify-between gap-8">
+            {/* Quick Links */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-medium">Quick Links</h3>
+              <ul className="grid grid-cols-1">
+                {quickLinks.map((link) => (
+                  <li key={link.title}>
+                    <Link
+                      href={link.link}
+                      className="text-muted-foreground underline text-sm hover:text-primary transition-colors"
+                    >
+                      {link.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium">Quick Links</h3>
-            <ul className="grid grid-cols-2 md:grid-cols-1 gap-2">
-              {quickLinks.map((link) => (
-                <li key={link.title}>
+            {/* Actions */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-medium">Actions</h3>
+              <div className="space-y-3 grid grid-cols-1">
+                <Button asChild variant="outline">
                   <Link
-                    href={link.link}
-                    className="text-muted-foreground underline text-sm hover:text-primary transition-colors"
+                    target="_blank"
+                    href="https://drive.google.com/file/d/1dtZCEgZyof-qrUreeVpXDlOovosegpuf/view"
+                    rel="noopener noreferrer"
                   >
-                    {link.title}
+                    <FileText className="mr-2 h-4 w-4" />
+                    View Resume
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                </Button>
 
-          {/* Actions */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium">Actions</h3>
-            <div className="space-y-4">
-              <Button asChild size="lg" className="w-full" variant="outline">
-                <Link
-                  target="_blank"
-                  href="https://drive.google.com/file/d/1dtZCEgZyof-qrUreeVpXDlOovosegpuf/view"
-                  rel="noopener noreferrer"
-                >
-                  <FileText className="mr-2 h-4 w-4" />
-                  View Resume
-                </Link>
-              </Button>
-
-              <Button
-                size="lg"
-                className="w-full hover:cursor-pointer"
-                onClick={scrollToTop}
-              >
-                <ArrowUp className="mr-2 h-4 w-4" />
-                Back to Top
-              </Button>
+                <Button className="hover:cursor-pointer" onClick={scrollToTop}>
+                  <ArrowUp className="mr-2 h-4 w-4" />
+                  Back to Top
+                </Button>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center">
+        <div className="relative mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center">
+          <div className="absolute inset-x-0 top-0 h-px w-full bg-neutral-200/80 dark:bg-neutral-800/80">
+            <div className="absolute mx-auto h-px w-full bg-gradient-to-r from-transparent via-stone-500 to-transparent" />
+          </div>
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Shahadath Hossen Sajib. All rights
             reserved.

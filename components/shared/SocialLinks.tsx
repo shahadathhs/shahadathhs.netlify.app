@@ -4,7 +4,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Facebook, Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 
 export default function SocialLinks() {
@@ -48,7 +48,7 @@ export default function SocialLinks() {
         </Tooltip>
       </TooltipProvider>
 
-      <TooltipProvider>
+      {/* <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
@@ -65,7 +65,7 @@ export default function SocialLinks() {
             <p>Facebook</p>
           </TooltipContent>
         </Tooltip>
-      </TooltipProvider>
+      </TooltipProvider> */}
 
       <TooltipProvider>
         <Tooltip>

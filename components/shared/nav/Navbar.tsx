@@ -40,7 +40,7 @@ export default function Navbar() {
     >
       <div
         className={cn(
-          "transition-all transform ease-in-out duration-500 container mx-auto bg-white dark:bg-slate-900 flex items-center justify-between border rounded p-2 lg:p-4",
+          "relative transition-all transform ease-in-out duration-500 container mx-auto bg-white dark:bg-slate-900 flex items-center justify-between border rounded p-2 lg:p-4",
           scrolled ? "max-w-7xl" : ""
         )}
       >
@@ -59,12 +59,7 @@ export default function Navbar() {
           <ModeToggle />
         </div>
 
-        <BorderBeam
-          duration={40}
-          size={100}
-          reverse
-          className="from-transparent via-green-500 to-transparent"
-        />
+        <BorderBeam duration={40} size={100} />
       </div>
     </nav>
   );

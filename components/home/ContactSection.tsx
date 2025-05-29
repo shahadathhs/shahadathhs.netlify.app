@@ -228,27 +228,13 @@ export default function ContactSection() {
               </form>
             </CardContent>
 
-            <BorderBeam
-              duration={6}
-              size={400}
-              className="from-transparent via-red-500 to-transparent"
-            />
-            <BorderBeam
-              duration={6}
-              delay={3}
-              size={400}
-              className="from-transparent via-blue-500 to-transparent"
-            />
+            <BorderBeam duration={6} size={400} />
+            <BorderBeam duration={6} delay={3} size={400} />
           </Card>
         </div>
 
         {/* border beam */}
-        <BorderBeam
-          duration={40}
-          size={300}
-          reverse
-          className="from-transparent via-green-500 to-transparent"
-        />
+        <BorderBeam duration={40} size={300} reverse />
       </div>
     </div>
   );

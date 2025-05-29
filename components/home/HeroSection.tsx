@@ -17,23 +17,23 @@ export default function HeroSection() {
     <div className="relative mx-auto my-10 flex flex-col items-center justify-center">
       {/* top */}
       <div className="absolute inset-x-0 top-0 h-px w-full bg-neutral-200/80 dark:bg-neutral-800/80">
-        <div className="absolute mx-auto h-px w-40 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
-        <div className="absolute right-0 mx-auto h-px w-40 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+        <div className="absolute mx-auto h-px w-40 bg-gradient-to-r from-transparent via-stone-500 to-transparent" />
+        <div className="absolute right-0 mx-auto h-px w-40 bg-gradient-to-r from-transparent via-stone-500 to-transparent" />
       </div>
 
       {/* left */}
       <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
-        <div className="absolute top-0 h-60 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+        <div className="absolute top-0 h-60 w-px bg-gradient-to-b from-transparent via-stone-500 to-transparent" />
       </div>
 
       {/* bottom */}
       <div className="absolute inset-x-0 bottom-0 h-px w-full bg-neutral-200/80 dark:bg-neutral-800/80">
-        <div className="absolute mx-auto h-px w-full bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+        <div className="absolute mx-auto h-px w-full bg-gradient-to-r from-transparent via-stone-500 to-transparent" />
       </div>
 
       {/* right */}
       <div className="absolute inset-y-0 right-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
-        <div className="absolute h-60 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+        <div className="absolute h-60 w-px bg-gradient-to-b from-transparent via-stone-500 to-transparent" />
       </div>
 
       {/* content */}

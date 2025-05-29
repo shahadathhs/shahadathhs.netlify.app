@@ -26,7 +26,10 @@ export default function SkillsSection() {
     },
     { title: "Authentication", description: ["JWT", "OAuth 2"] },
     { title: "Testing", description: ["Jest", "Supertest"] },
-    { title: "Tools", description: ["Git", "VS Code", "Postman", "Render", "Vercel"] },
+    {
+      title: "Tools",
+      description: ["Git", "VS Code", "Postman", "Render", "Vercel"],
+    },
     { title: "Monorepo Tools", description: ["Turborepo", "Nx"] },
     { title: "Package Manager", description: ["npm", "pnpm"] },
   ];
@@ -70,7 +73,7 @@ export default function SkillsSection() {
         duration={40}
         size={300}
         reverse
-        className="from-transparent via-green-500 to-transparent opacity-0 md:opacity-100"
+        className="opacity-0 md:opacity-100"
       />
     </div>
   );

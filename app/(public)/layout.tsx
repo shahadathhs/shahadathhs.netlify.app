@@ -12,7 +12,7 @@ export default function PublicLayout({
       <Navbar />
 
       {/* main content */}
-      <div className="min-h-screen">{children}</div>
+      {children}
 
       {/* footer */}
       <Footer />
