@@ -22,7 +22,7 @@ export default function NotFound() {
             </Link>
           </Button>
           <Button variant="outline" asChild className="gap-2">
-            <Link href="/#contact">
+            <Link href="/contact">
               <Search className="w-4 h-4" />
               Contact me
             </Link>
