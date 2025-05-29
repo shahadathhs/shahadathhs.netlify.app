@@ -165,7 +165,7 @@ export default function ContactSection() {
       <div className="w-full flex justify-end">
         <Card className="w-full relative overflow-hidden max-w-[450px]">
           <CardContent>
-            <h2 className="text-2xl font-semibold mb-6">Send a Message</h2>
+            <h2 className="text-2xl font-semibold mb-6">Send me Email</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
@@ -197,7 +197,7 @@ export default function ContactSection() {
                 <Input
                   id="subject"
                   name="subject"
-                  placeholder="Message subject"
+                  placeholder="Email subject"
                   value={formData.subject}
                   onChange={handleChange}
                   required
@@ -218,7 +218,7 @@ export default function ContactSection() {
               </div>
 
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "Sending..." : "Send Email"}
               </Button>
             </form>
           </CardContent>

@@ -51,7 +51,8 @@ export default function CertificateTimeline() {
                     </p>
                     {certificate.credentialId && (
                       <p className="text-xs text-muted-foreground">
-                        <span className="font-bold">Credential ID:</span> {certificate.credentialId}
+                        <span className="font-bold">Credential ID:</span>{" "}
+                        {certificate.credentialId}
                       </p>
                     )}
                   </div>
@@ -65,7 +66,7 @@ export default function CertificateTimeline() {
                   className="text-xs h-8 mt-2"
                   asChild
                 >
-                  <Link href={certificate.credentialUrl}>
+                  <Link target="_blank" href={certificate.credentialUrl}>
                     <ExternalLink className="h-3 w-3 mr-1" />
                     Show credential
                   </Link>
