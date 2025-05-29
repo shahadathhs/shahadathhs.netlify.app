@@ -4,6 +4,7 @@ export const navLinks = [
   { title: "Contact", link: "/contact" },
   { title: "Blogs", link: "/blogs" },
   { title: "Projects", link: "/projects" },
+  { title: "Skills", link: "/skills" },
 ];
 
 export const authLinks = [
@@ -16,6 +17,7 @@ export const quickLinks = [
   { title: "Contact", link: "/contact" },
   { title: "Blogs", link: "/blogs" },
   { title: "Projects", link: "/projects" },
+  { title: "Skills", link: "/skills" },
 ];
 
 // * Dashboard side bar links based on role

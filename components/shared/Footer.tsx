@@ -65,7 +65,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-lg font-medium">Quick Links</h3>
-            <ul className="space-y-2 grid grid-cols-2 md:grid-cols-1 gap-2">
+            <ul className="grid grid-cols-2 md:grid-cols-1 gap-2">
               {quickLinks.map((link) => (
                 <li key={link.title}>
                   <Link
