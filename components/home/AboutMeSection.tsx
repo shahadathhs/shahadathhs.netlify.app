@@ -15,7 +15,7 @@ const features = [
   {
     title: "API Design",
     description:
-      "Creating RESTful and GraphQL APIs for seamless data exchange.",
+      "Creating RESTful APIs for seamless data exchange.",
     icon: Server,
   },
   {
