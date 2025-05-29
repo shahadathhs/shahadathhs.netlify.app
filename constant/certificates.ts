@@ -42,7 +42,7 @@ export const certificates: Certificate[] = [
       "https://www.udemy.com/certificate/UC-0ef939de-66dd-421c-993d-b2f7cddae802",
     skills: ["Jest", "Vitest", "React Testing Library", "Jest"],
     description:
-      "This course helped me learn best practices for testing applications using Jest or Vitest and React Testing Library in a test-driven development (TDD) approach.",
+      "This course helped me learn best practices for testing applications using Vitest and React Testing Library in a test-driven development (TDD) approach.",
     logo: "/udemy_logo.jpeg",
   },
   {
@@ -55,7 +55,7 @@ export const certificates: Certificate[] = [
       "https://www.freecodecamp.org/certification/fcc4b53621b-923e-4494-a85b-3667294ce6e7/quality-assurance-v7",
     skills: ["Mocha", "Chai"],
     description:
-      "This program taught me the learn REST API testing using Mocha and Chai.",
+      "This program helped me learn REST API testing using Mocha and Chai.",
     logo: "/free_code_camp_logo.jpeg",
   },
   {
