@@ -1,10 +1,11 @@
 import AboutMeSection from "@/components/home/AboutMeSection";
+import CertificateTimeline from "@/components/home/CertificateTimeline";
 import ContactSection from "@/components/home/ContactSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
+import FeaturedBlogsSection from "@/components/home/FeaturedBlogsSection";
 import HeroSection from "@/components/home/HeroSection";
 import ProjectSection from "@/components/home/ProjectSection";
 import SkillsSection from "@/components/home/SkillsSection";
-import FeaturedBlogsSection from "@/components/home/FeaturedBlogsSection";
 
 export default function Home() {
   return (
@@ -13,8 +14,9 @@ export default function Home() {
       <AboutMeSection />
       <ExperienceSection />
       <SkillsSection />
-      <ContactSection />
+      <CertificateTimeline />
       <ProjectSection />
+      <ContactSection />
       <FeaturedBlogsSection />
     </main>
   );

@@ -8,13 +8,14 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
 
 export const MobileNavDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="px-3 py-2">
-          Menu
+        <Button variant="outline" size="icon">
+          <Menu />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="z-[10000]">

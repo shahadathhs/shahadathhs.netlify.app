@@ -43,7 +43,7 @@ export default function Navbar() {
         <Logo />
 
         {/* Navigation Links */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
           {/* Desktop Navigation: Large screen links */}
           {!isMobile && <LargeNavLinks />}
 
