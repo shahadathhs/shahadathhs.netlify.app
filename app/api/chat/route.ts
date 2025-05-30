@@ -1,39 +1,50 @@
+import configuration from "@/config/configuration";
+import { TMessage } from "@/types/chatMessage";
 import { GoogleGenAI } from "@google/genai";
 import { NextRequest, NextResponse } from "next/server";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+// * 0 Initialize gemini ai
+const ai = new GoogleGenAI({ apiKey: configuration.geminiAPIKey });
 
 export async function POST(req: NextRequest) {
-  const { question } = await req.json();
+  const { history } = await req.json();
 
-  // 1) create a new chat session
-  const chat = await ai.chats.create({
-    model: "gemini-2.0-flash",
-    config: {
-      temperature: 0.5,
-      maxOutputTokens: 1024,
-    },
-    history: [
+  // * 1 Build chat session with dynamic history (including system prompt)
+  const systemPrompt = {
+    parts: [
       {
-        parts: [
-          {
-            text: "You are Sajib’s friendly portfolio assistant. Answer questions about his skills, projects, and background.",
-          },
-        ],
-        role: "model", // * user or model
+        text: "You are Sajib’s friendly portfolio assistant. Answer questions about his skills, projects, and background. Respond using Markdown formatting when appropriate.",
       },
     ],
+    role: "model",
+  };
+
+  // * 2 Map user history to Gemini parts
+  const geminiHistory = [
+    systemPrompt,
+    ...history.map((msg: TMessage) => ({
+      parts: [{ text: msg.text }],
+      role: msg.role === "user" ? "user" : "model",
+    })),
+  ];
+
+  // * 3 Create chat with full history
+  const chat = await ai.chats.create({
+    model: "gemini-2.0-flash",
+    config: { temperature: 0.6, maxOutputTokens: 1024 },
+    history: geminiHistory,
   });
 
-  // 2) send the user’s question and wait for the model response
-  const resp = await chat.sendMessage({ message: question });
+  // * 4 Send last message and get response
+  const last = history[history.length - 1];
+  const resp = await chat.sendMessage({ message: last.text });
+
   // ‣ each `resp` has a `candidates` array; take the first candidate
   const content = resp.candidates?.[0]?.content;
-
-  // 3) pull out the text from the first part
+  // * 5 pull out the text from the first part
   const answer =
     content?.parts?.[0]?.text ?? "Sorry, I couldn't generate an answer.";
 
-  // 4) return it
+  // * 6 return it
   return NextResponse.json({ answer });
 }
