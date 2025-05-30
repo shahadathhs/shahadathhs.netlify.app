@@ -4,6 +4,7 @@ import type React from "react";
 
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Button } from "@/components/ui/button";
+import { downloadUrl, portfolioData } from "@/constant/terminal";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -19,40 +20,6 @@ export default function TerminalPage() {
   const [isTyping, setIsTyping] = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const portfolioData = {
-    skills: [
-      "JavaScript/TypeScript",
-      "Node.js/Express/Nest.js",
-      "MongoDB/Mongoose",
-      "PostgreSQL/Prisma",
-      "Git/GitHub",
-      "REST APIs",
-      "Jest/SuperTest",
-    ],
-    projects: [
-      {
-        name: "e-commerce-platform",
-        description:
-          "Full-stack e-commerce platform with React, Node.js, and MongoDB",
-        tech: "React, Node.js, MongoDB, Stripe",
-        status: "Production",
-      },
-      {
-        name: "task-management-app",
-        description:
-          "Real-time task management application with team collaboration",
-        tech: "Next.js, Socket.io, PostgreSQL",
-        status: "Development",
-      },
-    ],
-    contact: {
-      email: "sajib@example.com",
-      linkedin: "https://linkedin.com/in/sajibrahman",
-      github: "https://github.com/sajibrahman",
-      website: "https://sajibrahman.dev",
-    },
-  };
 
   const executeCommand = (input: string): string[] => {
     const cmd = input.trim().toLowerCase();
@@ -99,7 +66,7 @@ export default function TerminalPage() {
         if (project) {
           return [
             `Project: ${project.name}`,
-            `Description: ${project.description}`,
+            `Overview: ${project.description}`,
             `Technologies: ${project.tech}`,
             `Status: ${project.status}`,
           ];
@@ -110,11 +77,10 @@ export default function TerminalPage() {
 
       case "download":
         if (args[1] === "cv") {
-          // Simulate download
           setTimeout(() => {
             const link = document.createElement("a");
-            link.href = "/resume.pdf";
-            link.download = "Sajib_Rahman_Resume.pdf";
+            link.href = downloadUrl;
+            link.download = "Shahadath_Hossen_Sajib_Resume.pdf";
             link.click();
           }, 1000);
           return ["Downloading resume... Please check your downloads folder."];
@@ -136,10 +102,10 @@ export default function TerminalPage() {
 
       case "whoami":
         return [
-          "Sajib Rahman",
-          "Full Stack Developer",
+          "Shahadath Hossen Sajib",
+          "Backend Developer",
           "",
-          "I'm a passionate developer with expertise in modern web technologies.",
+          "I’m a passionate developer with expertise in modern web technologies.",
           "I love building scalable applications and solving complex problems.",
         ];
 
