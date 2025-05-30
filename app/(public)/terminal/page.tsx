@@ -2,6 +2,7 @@
 
 import type React from "react";
 
+import { BorderBeam } from "@/components/magicui/border-beam";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -194,23 +195,27 @@ export default function TerminalPage() {
   }, []);
 
   return (
-    <div className="min-h-screen text-green-400 font-mono">
-      <div className="container mx-auto p-4">
-        <div className="mb-4">
-          <Link href="/">
-            <Button
-              variant="ghost"
-              className="text-green-400 hover:text-green-300 hover:bg-green-900/20"
-            >
+    <div className="my-10 py-10 px-4 md:px-16 border rounded relative overflow-clip">
+      <div className="container mx-auto max-w-4xl">
+        <div className="mb-6">
+          <Link href="/" className="flex justify-center">
+            <Button variant="ghost" className="mb-4">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Portfolio
             </Button>
           </Link>
+          <h1 className="text-3xl font-bold text-center mb-2">
+            Now about me via commands
+          </h1>
+          <p className="text-center text-muted-foreground">
+            Scan the QR code to connect with me instantly
+          </p>
         </div>
 
+        {/* terminal div */}
         <div
           ref={terminalRef}
-          className="bg-black border border-green-400 rounded-lg p-4 h-[70vh] overflow-y-auto"
+          className="bg-black border rounded shadow p-4 h-[70vh] overflow-y-auto"
         >
           {commands.map((command, index) => (
             <div key={index} className="mb-2">
@@ -251,10 +256,13 @@ export default function TerminalPage() {
           </form>
         </div>
 
-        <div className="mt-4 text-sm text-green-600">
-          <p>💡 Tip: Try commands like 'skills', 'projects', or 'contact'</p>
+        <div className="mt-4 text-sm ">
+          <p>Pro Tip: Try commands like 'skills', 'projects', or 'contact'</p>
         </div>
       </div>
+
+      {/* border beam */}
+      <BorderBeam duration={40} size={300} />
     </div>
   );
 }
