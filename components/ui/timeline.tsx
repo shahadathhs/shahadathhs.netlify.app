@@ -1,99 +1,169 @@
 "use client";
 
-import { experienceData } from "@/constant/experienceData";
+import type { TimelineEntry } from "@/constant/experienceData";
+import { cn } from "@/lib/utils";
+import { CalendarIcon, MapPinIcon } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
-export const Timeline = () => {
-  const ref = useRef<HTMLDivElement>(null);
+interface TimelineProps {
+  data: TimelineEntry[];
+}
+
+export const Timeline = ({ data }: TimelineProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (ref.current) {
-      setHeight(ref.current.getBoundingClientRect().height);
-    }
-  }, [ref]);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 10%", "end 50%"],
+    offset: ["start 60%", "end 40%"],
   });
 
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  // Calculate timeline progress based on scroll
+  const progressHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <div
-      className="w-full bg-white dark:bg-neutral-950 font-sans md:px-16"
+    <section
       ref={containerRef}
+      className="w-full bg-white dark:bg-neutral-950 font-sans py-16 px-4 md:px-8 lg:px-16"
     >
-      <div className="max-w-7xl mx-auto px-2 md:px-0 pt-10 md:pt-20">
-        <h2 className="text-4xl mb-4 font-bold text-black dark:text-white">
-          Professional Timeline
-        </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-base max-w-lg">
-          With almost a year and a half in tech, here are highlights from my
-          journey. I&apos;m always eager for new challenges and
-          collaborations—feel free to reach out!
-        </p>
-      </div>
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16">
+          <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl">
+            My Tech Journey
+          </h2>
+          <p className="mt-2 text-neutral-700 dark:text-neutral-300 text-base max-w-2xl">
+            Over the past 1.5 years, I've grown through hands-on experience and
+            real-world projects. Here’s a look at some key milestones that
+            shaped my path so far. Always open to exciting opportunities—let’s
+            connect!
+          </p>
+        </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
-        {experienceData.map((item, index) => (
-          <div
-            key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
-          >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 p-2" />
-              </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-4xl font-bold text-neutral-500 dark:text-neutral-500 ">
-                {item.title}
-              </h3>
-            </div>
-
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
-                {item.title}
-              </h3>
-              <div className="mb-2">
-                <h4 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200">
-                  {item.company}
-                </h4>
-                <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                  {item.location}
-                </p>
-              </div>
-              <p className="text-md font-medium text-blue-600 dark:text-blue-400 mb-4">
-                {item.designation}
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-base font-normal text-neutral-800 dark:text-neutral-200">
-                {item.responsibilities.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-            </div>
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-px top-0 h-full w-0.5 bg-neutral-200 dark:bg-neutral-800">
+            <motion.div
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"
+              style={{ height: progressHeight }}
+            />
           </div>
-        ))}
 
-        {/* Progress Line */}
-        <div
-          style={{
-            height: height + "px",
-          }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
-        >
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
-          />
+          {/* Timeline entries */}
+          {data.map((entry, index) => (
+            <TimelineEntryComponent
+              key={index}
+              entry={entry}
+              index={index}
+              isActive={activeIndex === index}
+              setActive={() => setActiveIndex(index)}
+              clearActive={() => setActiveIndex(null)}
+              isEven={index % 2 === 0}
+            />
+          ))}
         </div>
       </div>
-    </div>
+    </section>
+  );
+};
+
+interface TimelineEntryProps {
+  entry: TimelineEntry;
+  index: number;
+  isActive: boolean;
+  setActive: () => void;
+  clearActive: () => void;
+  isEven: boolean;
+}
+
+const TimelineEntryComponent = ({
+  entry,
+  index,
+  isActive,
+  setActive,
+  clearActive,
+  isEven,
+}: TimelineEntryProps) => {
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+      },
+    }),
+  };
+
+  return (
+    <motion.div
+      className="relative mb-16 md:mb-24"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      custom={index}
+      variants={variants}
+    >
+      {/* Timeline dot */}
+      <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+        <motion.div
+          className={cn(
+            "h-8 w-8 rounded-full border-4 border-white dark:border-neutral-950 flex items-center justify-center transition-all duration-300",
+            isActive
+              ? "bg-blue-500 scale-125"
+              : "bg-neutral-200 dark:bg-neutral-700"
+          )}
+          whileHover={{ scale: 1.2 }}
+        />
+      </div>
+
+      {/* Content card */}
+      <div
+        className={cn(
+          "ml-12 md:ml-0 md:w-[calc(50%-40px)]",
+          isEven ? "md:mr-auto" : "md:ml-auto"
+        )}
+      >
+        <motion.div
+          className={cn(
+            "bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-lg border border-neutral-100 dark:border-neutral-800 transition-all duration-300",
+            isActive &&
+              "shadow-xl border-blue-200 dark:border-blue-900 -translate-y-1"
+          )}
+          whileHover={{ y: -5 }}
+          onMouseEnter={setActive}
+          onMouseLeave={clearActive}
+        >
+          <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-3">
+            <CalendarIcon className="h-4 w-4" />
+            <span className="font-medium">{entry.title}</span>
+          </div>
+
+          <h3 className="text-xl font-bold text-neutral-800 dark:text-white mb-1">
+            {entry.designation}
+          </h3>
+          <div className="xl:flex items-center gap-1 text-neutral-500 dark:text-neutral-400 mb-4">
+            <span className="font-medium">{entry.company}</span>
+            <span className="hidden xl:block">•</span>
+            <div className="flex items-center gap-1">
+              <MapPinIcon className="h-3 w-3" />
+              <span className="text-xs md:text-sm">{entry.location}</span>
+            </div>
+          </div>
+
+          <ul className="space-y-2 text-neutral-700 dark:text-neutral-300">
+            {entry.responsibilities.map((item, idx) => (
+              <li
+                key={idx}
+                className="flex items-start gap-2 before:content-['•'] before:text-blue-500 before:mr-2"
+              >
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
