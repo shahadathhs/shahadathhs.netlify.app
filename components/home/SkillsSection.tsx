@@ -9,7 +9,6 @@ import {
   IconTestPipe,
   IconTools,
 } from "@tabler/icons-react";
-// import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import { BorderBeam } from "../magicui/border-beam";
 import { Badge } from "../ui/badge";
 
@@ -20,6 +19,7 @@ export default function SkillsSection() {
   }> = [
     { title: "Languages", description: ["JavaScript", "TypeScript"] },
     { title: "Backend", description: ["Node.js", "Express", "Nest.js"] },
+    { title: "Frontend", description: ["React", "React Router V7", "Next.js"] },
     {
       title: "Databases",
       description: ["MongoDB", "Mongoose", "PostgreSQL", "Prisma"],
@@ -28,10 +28,9 @@ export default function SkillsSection() {
     { title: "Testing", description: ["Jest", "Supertest"] },
     {
       title: "Tools",
-      description: ["Git", "VS Code", "Postman", "Render", "Vercel"],
+      description: ["Git", "Postman", "Render", "Vercel"],
     },
     { title: "Monorepo Tools", description: ["Turborepo", "Nx"] },
-    { title: "Package Manager", description: ["npm", "pnpm"] },
   ];
 
   const iconMap: Record<string, React.ReactNode> = {
@@ -48,7 +47,6 @@ export default function SkillsSection() {
   return (
     <div className="my-10 md:border rounded relative overflow-clip md:px-16">
       <div className="md:mt-12 py-6 max-w-7xl mx-auto">
-        {/* <TypewriterEffectSmooth words={words} /> */}
         <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl">
           Know about my skills
         </h2>
