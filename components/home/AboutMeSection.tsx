@@ -13,9 +13,20 @@ import {
 
 const features = [
   {
-    title: "API Design",
+    title: "Fullstack MERN Development",
     description:
-      "Creating RESTful APIs for seamless data exchange.",
+      "Building robust applications using MongoDB, Express, React (with React Router v7), and Node.js.",
+    icon: Server,
+  },
+  {
+    title: "Next.js & SSR",
+    description:
+      "Creating fast, SEO-friendly apps with server-side rendering, dynamic routing, and optimized performance.",
+    icon: Database,
+  },
+  {
+    title: "API Design",
+    description: "Creating RESTful APIs for seamless data exchange.",
     icon: Server,
   },
   {
@@ -65,14 +76,19 @@ export default function AboutMeSection() {
             transition={{ duration: 0.6 }}
           >
             <p className="mt-2 text-neutral-700 dark:text-neutral-300 text-base">
-              I’m a backend developer passionate about building scalable,
-              efficient, secure server-side applications. I’m deeply focused on
-              mastering backend architecture, database design, API security, and
-              real-world system design. I aim to become a highly skilled backend
-              engineer, capable of building robust, scalable systems and
-              contributing to complex infrastructure. I’m excited to learn,
-              grow, and collaborate with innovative teams that value clean code,
-              scalability, and strong engineering practices.
+              I’m a passionate MERN stack developer with a strong focus on
+              backend development. I specialize in building scalable, efficient,
+              and secure server-side applications using Node.js, Express,
+              MongoDB, and modern frontend tools like React Router V7 and
+              Next.js. I’m deeply committed to mastering backend architecture,
+              API security, database design, and real-world system design. I
+              also craft smooth client-side experiences using React Router v7
+              and server-side rendering with Next.js. My goal is to become a
+              highly skilled engineer capable of developing robust, full-stack
+              systems and contributing to both front-end and back-end
+              infrastructures. I’m excited to keep learning, growing, and
+              collaborating with innovative teams that value clean code,
+              performance, and modern engineering best practices.
             </p>
           </motion.div>
 

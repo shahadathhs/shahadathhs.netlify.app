@@ -82,10 +82,10 @@ export default function HeroSection() {
             duration: 0.3,
             delay: 0.8,
           }}
-          className="relative z-10 mx-auto max-w-xl py-4 text-center text-3xl font-normal text-slate-700 dark:text-slate-300"
+          className="relative z-10 mx-auto max-w-xl py-4 text-center text-xl md:text-3xl font-normal text-slate-700 dark:text-slate-300"
         >
           <Typewriter
-            words={["Backend Developer", "System Design Enthusiast"]}
+            words={["Backend Developer (Node.js)", "MERN Stack Developer"]}
             loop={Infinity}
             cursor
             typeSpeed={100}
