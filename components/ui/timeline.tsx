@@ -25,7 +25,7 @@ export const Timeline = ({ data }: TimelineProps) => {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-white dark:bg-neutral-950 font-sans py-16 px-4 md:px-8 lg:px-16"
+      className="w-full bg-white dark:bg-neutral-950 font-sans pt-16 px-4 md:px-8 lg:px-16"
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
@@ -98,7 +98,7 @@ const TimelineEntryComponent = ({
 
   return (
     <motion.div
-      className="relative mb-16 md:mb-24"
+      className="relative mb-16"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
