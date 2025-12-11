@@ -9,7 +9,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint:check": "eslint . --ext .ts",
+    "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format:check": "prettier --ignore-path .gitignore --check \"**/*.+(js|ts|json)\"",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
