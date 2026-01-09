@@ -2,13 +2,20 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FileText, Home, Plus } from 'lucide-react';
+import {
+  FileText,
+  Home,
+  Plus,
+  FolderHeart,
+  MessageSquare,
+  Globe,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
 const navItems = [
   {
-    title: 'Dashboard',
+    title: 'Overview',
     href: '/dashboard',
     icon: Home,
   },
@@ -18,9 +25,14 @@ const navItems = [
     icon: FileText,
   },
   {
-    title: 'New Blog',
-    href: '/dashboard/blogs/new',
-    icon: Plus,
+    title: 'Projects',
+    href: '/dashboard/projects',
+    icon: FolderHeart,
+  },
+  {
+    title: 'Messages',
+    href: '/dashboard/messages',
+    icon: MessageSquare,
   },
   // {
   //   title: "Settings",
@@ -50,6 +62,31 @@ export function DashboardNav() {
           </Link>
         </Button>
       ))}
+      <div className="mt-auto space-y-1">
+        <Button
+          variant="ghost"
+          className="flex w-full items-center justify-start gap-2"
+          asChild
+        >
+          <Link href="/dashboard/blogs/new">
+            <Plus className="h-4 w-4" />
+            New Blog
+          </Link>
+        </Button>
+        <div className="px-3 py-2">
+          <div className="h-px bg-border" />
+        </div>
+        <Button
+          variant="ghost"
+          className="flex w-full items-center justify-start gap-2 text-muted-foreground hover:text-primary"
+          asChild
+        >
+          <Link href="/">
+            <Globe className="h-4 w-4" />
+            View Site
+          </Link>
+        </Button>
+      </div>
     </nav>
   );
 }

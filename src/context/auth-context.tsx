@@ -46,12 +46,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = async (email: string, password: string) => {
-    try {
-      const userData = await apiLogin(email, password);
+    const response = await apiLogin(email, password);
+    if (!response.success) {
+      throw new Error(response.error);
+    }
+    if (response.data) {
+      const { id, name, email } = response.data;
+      const userData = { id, name, email };
       localStorage.setItem('user', JSON.stringify(userData));
       setUser(userData);
-    } catch (error) {
-      throw error;
     }
   };
 

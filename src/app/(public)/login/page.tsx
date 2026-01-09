@@ -22,7 +22,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 import { useAuth } from '@/context/auth-context';
 
 const formSchema = z.object({
@@ -33,7 +33,6 @@ const formSchema = z.object({
 });
 
 export default function LoginPage() {
-  const { toast } = useToast();
   const router = useRouter();
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
@@ -50,17 +49,16 @@ export default function LoginPage() {
     setIsLoading(true);
     try {
       await login(values.email, values.password);
-      toast({
-        title: 'Login successful',
+      toast.success('Login successful', {
         description: 'You have been logged in successfully',
       });
       router.push('/dashboard');
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       console.error('Login error:', error);
-      toast({
-        variant: 'destructive',
-        title: 'Login failed',
-        description: 'Invalid email or password. Please try again.',
+      toast.error('Login failed', {
+        description:
+          error.message || 'Invalid email or password. Please try again.',
       });
     } finally {
       setIsLoading(false);
