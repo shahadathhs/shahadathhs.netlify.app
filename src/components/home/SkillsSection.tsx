@@ -72,34 +72,34 @@ export default function SkillsSection() {
   };
 
   return (
-    <div className="my-10 md:border rounded relative overflow-clip md:px-16">
-      <div className="md:mt-12 py-6 max-w-7xl mx-auto">
-        <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl">
-          Know about my skills
-        </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-base max-w-lg">
-          I always look forward to continuous learning and improving myself.
-        </p>
-      </div>
+    <div className="relative w-full mt-10 border rounded overflow-clip">
+      <section className="w-full bg-white dark:bg-neutral-950 py-16 px-4 md:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          {/* Header Block */}
+          <div className="mb-16">
+            <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl">
+              Technical Skills
+            </h2>
+            <p className="mt-2 text-neutral-700 dark:text-neutral-300 text-base max-w-2xl">
+              I always look forward to continuous learning and improving myself.
+              Here&apos;s a snapshot of the tools and technologies I work with.
+            </p>
+          </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 max-w-7xl mx-auto relative z-10">
-        {skills.map((skill, idx) => (
-          <Skill
-            key={skill.title}
-            title={skill.title}
-            icon={iconMap[skill.title]}
-            description={skill.description}
-            index={idx}
-          />
-        ))}
-      </div>
-
-      <BorderBeam
-        duration={40}
-        size={300}
-        reverse
-        className="opacity-0 md:opacity-100"
-      />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 relative z-10">
+            {skills.map((skill, idx) => (
+              <Skill
+                key={skill.title}
+                title={skill.title}
+                icon={iconMap[skill.title]}
+                description={skill.description}
+                index={idx}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      <BorderBeam duration={200} size={250} />
     </div>
   );
 }
