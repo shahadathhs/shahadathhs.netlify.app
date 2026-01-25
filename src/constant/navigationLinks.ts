@@ -1,25 +1,18 @@
-// * nav bar
 export const navLinks = [
-  { title: 'Home', link: '/' },
-  { title: 'Contact', link: '/contact' },
-  { title: 'Blogs', link: '/blogs' },
-  { title: 'Projects', link: '/projects' },
-  { title: 'Skills', link: '/skills' },
+  { title: 'Home', link: '#hero' },
+  { title: 'Skills', link: '#skills' },
+  { title: 'Projects', link: '#projects' },
+  { title: 'Contact', link: '#contact' },
 ];
 
-export const authLinks = [{ title: 'Login', link: '/login' }];
+export const authLinks = [];
 
 // * footer
 export const quickLinks = [
-  { title: 'Contact', link: '/contact' },
-  { title: 'Blogs', link: '/blogs' },
-  { title: 'Projects', link: '/projects' },
-  { title: 'Skills', link: '/skills' },
+  { title: 'Skills', link: '#skills' },
+  { title: 'Projects', link: '#projects' },
+  { title: 'Contact', link: '#contact' },
 ];
 
 // * Dashboard side bar links based on role
-export const adminLinks = [
-  { name: 'Admin', href: '/admin' },
-  { name: 'Blogs', href: '/admin/blogs' },
-  { name: 'Projects', href: '/admin/projects' },
-];
+export const adminLinks = [];
