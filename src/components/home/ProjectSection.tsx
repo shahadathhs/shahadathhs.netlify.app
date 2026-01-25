@@ -13,6 +13,8 @@ import { motion } from 'motion/react';
 
 import { BorderBeam } from '../magicui/border-beam';
 
+import ProjectSkeleton from '../skeleton/ProjectSkeleton';
+
 const PINNED_REPOS = [
   'barisathi',
   'bike-shop',
@@ -44,17 +46,6 @@ export default function ProjectSection() {
     loadRepos();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-        <p className="mt-4 text-muted-foreground font-medium">
-          Fetching projects from GitHub...
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="relative w-full mt-10 border rounded overflow-clip">
       <section
@@ -63,7 +54,7 @@ export default function ProjectSection() {
       >
         <div className="max-w-7xl mx-auto">
           {/* Header Block */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
             <div>
               <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl">
                 Open Source Projects
@@ -85,24 +76,28 @@ export default function ProjectSection() {
           </div>
 
           <div className="flex flex-col max-w-7xl mx-auto border-t border-border/50">
-            {repos.map((repo, idx) => (
-              <motion.div
-                key={repo.id}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <ProjectCard
-                  name={repo.name}
-                  description={repo.description}
-                  url={repo.html_url}
-                  stars={repo.stargazers_count}
-                  forks={repo.forks_count}
-                  language={repo.language}
-                />
-              </motion.div>
-            ))}
+            {loading
+              ? Array.from({ length: 4 }).map((_, i) => (
+                  <ProjectSkeleton key={i} />
+                ))
+              : repos.map((repo, idx) => (
+                  <motion.div
+                    key={repo.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: idx * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <ProjectCard
+                      name={repo.name}
+                      description={repo.description}
+                      url={repo.html_url}
+                      stars={repo.stargazers_count}
+                      forks={repo.forks_count}
+                      language={repo.language}
+                    />
+                  </motion.div>
+                ))}
           </div>
         </div>
       </section>

@@ -31,11 +31,11 @@ export default function ContactSection() {
     <div className="relative w-full mt-10 border rounded overflow-clip">
       <section
         id="contact"
-        className="w-full bg-white dark:bg-neutral-950 py-16 px-4 md:px-8 lg:px-16"
+        className="w-full bg-white dark:bg-neutral-950 py-16 px-4 md:px-8 lg:px-16 border-2"
       >
         <div className="max-w-7xl mx-auto">
           {/* Header Block */}
-          <div className="flex flex-col items-center text-center mb-16">
+          <div className="flex flex-col items-center text-center mb-10">
             <h2 className="text-3xl font-semibold text-black dark:text-white mb-4">
               <TypingAnimation>Get in touch</TypingAnimation>
             </h2>
