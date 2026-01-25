@@ -1,3 +1,23 @@
+# [1.1.0](https://github.com/shahadathhs/shahadathhs-portfolio/compare/v1.0.0...v1.1.0) (2026-01-25)
+
+### Bug Fixes
+
+- alignment fix ([124ed15](https://github.com/shahadathhs/shahadathhs-portfolio/commit/124ed15dfd63f8844fa8a2e09d7c79a0c70a5174))
+
+### Features
+
+- add scroll-to-top component, enable smooth scrolling ([f3a05d7](https://github.com/shahadathhs/shahadathhs-portfolio/commit/f3a05d7c7f9c88298814199c6823ce26ef0ce385))
+- admin seeding completed ([3cf22c9](https://github.com/shahadathhs/shahadathhs-portfolio/commit/3cf22c9d6fd9386202a9ea4fc92298d5d7fd5996))
+- authenticaiton completed ([f420d23](https://github.com/shahadathhs/shahadathhs-portfolio/commit/f420d23d7e4275e54da87f13c53ce4da3273b87e))
+- blogs section fixed ([5f89e3b](https://github.com/shahadathhs/shahadathhs-portfolio/commit/5f89e3b0f01d3121ccfdca60924d920df2aa2638))
+- bolgs & projects section updated ([30e877d](https://github.com/shahadathhs/shahadathhs-portfolio/commit/30e877d5baa8c682b1e3353157b69860b661e533))
+- codebase refactor ([86473d8](https://github.com/shahadathhs/shahadathhs-portfolio/commit/86473d87c11449f0675ab208c99c86945382a23a))
+- loading skeleton added ([4d693a0](https://github.com/shahadathhs/shahadathhs-portfolio/commit/4d693a0e22332968cfddd90c35c461b8fe90065c))
+- migrate to prisma ([3803474](https://github.com/shahadathhs/shahadathhs-portfolio/commit/38034743fac059ade7a196139830c55cccb33256))
+- portfolio v3 completed ([f5af1dd](https://github.com/shahadathhs/shahadathhs-portfolio/commit/f5af1dd275f11f2a2ef15600c1c9ec5b8c975a98))
+- some alignment fixed ([dd12ac6](https://github.com/shahadathhs/shahadathhs-portfolio/commit/dd12ac64bc4d18745038e2bf4681e8407dfbd209))
+- sync sections ([9092c85](https://github.com/shahadathhs/shahadathhs-portfolio/commit/9092c85fb0081e68d6e1e2796b855f9e669d934d))
+
 # 1.0.0 (2025-12-11)
 
 ### Bug Fixes
