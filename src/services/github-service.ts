@@ -10,57 +10,126 @@ export interface GithubRepo {
   fork: boolean;
 }
 
+export interface GithubResponse {
+  data: GithubRepo[];
+  error?: string;
+  isRateLimited?: boolean;
+}
+
+const CACHE_DURATION = 3600 * 1000; // 1 hour
+
+const getCache = <T>(key: string): T | null => {
+  if (typeof window === 'undefined') return null;
+  try {
+    const cached = localStorage.getItem(key);
+    if (!cached) return null;
+    const { data, timestamp } = JSON.parse(cached);
+    if (Date.now() - timestamp > CACHE_DURATION) {
+      localStorage.removeItem(key);
+      return null;
+    }
+    return data;
+  } catch (error) {
+    console.error('Error reading from cache:', error);
+    return null;
+  }
+};
+
+const setCache = (key: string, data: any) => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(key, JSON.stringify({ data, timestamp: Date.now() }));
+  } catch (error) {
+    console.error('Error saving to cache:', error);
+  }
+};
+
 export const fetchGithubRepos = async (
   username: string,
-): Promise<GithubRepo[]> => {
+): Promise<GithubResponse> => {
+  const cacheKey = `github_repos_${username}`;
+  const cachedData = getCache<GithubRepo[]>(cacheKey);
+  if (cachedData) return { data: cachedData };
+
   try {
     const response = await fetch(
       `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`,
-      {
-        next: { revalidate: 3600 }, // Cache for 1 hour
-      },
     );
+
+    if (response.status === 403) {
+      return { data: [], isRateLimited: true, error: 'Rate limit exceeded' };
+    }
+
     if (!response.ok) {
       throw new Error('Failed to fetch GitHub repos');
     }
+
     const data: GithubRepo[] = await response.json();
-    return data.filter((repo) => !repo.fork); // Filter out forks by default
-  } catch (error) {
-    console.error('Error fetching GitHub repos:', error);
-    return [];
+    const filteredData = data.filter((repo) => !repo.fork);
+    setCache(cacheKey, filteredData);
+    return { data: filteredData };
+  } catch (error: any) {
+    console.error('Error fetching GitHub repos:', error.message || error);
+    return { data: [], error: error.message };
   }
 };
 
 export const fetchRepoDetails = async (
   owner: string,
   repo: string,
-): Promise<GithubRepo | null> => {
+): Promise<{ data: GithubRepo | null; isRateLimited?: boolean }> => {
+  const cacheKey = `github_repo_${owner}_${repo}`;
+  const cachedData = getCache<GithubRepo>(cacheKey);
+  if (cachedData) return { data: cachedData };
+
   try {
     const response = await fetch(
       `https://api.github.com/repos/${owner}/${repo}`,
-      {
-        next: { revalidate: 3600 }, // Cache for 1 hour
-      },
     );
-    if (!response.ok) {
-      throw new Error('Failed to fetch repo details');
+
+    if (response.status === 403) {
+      return { data: null, isRateLimited: true };
     }
-    return await response.json();
-  } catch (error) {
-    console.error(`Error fetching repo details for ${owner}/${repo}:`, error);
-    return null;
+
+    if (!response.ok) {
+      return { data: null };
+    }
+
+    const data = await response.json();
+    setCache(cacheKey, data);
+    return { data };
+  } catch (error: any) {
+    console.error(
+      `Error fetching repo details for ${owner}/${repo}:`,
+      error.message || error,
+    );
+    return { data: null };
   }
 };
+
 export const fetchMultipleRepos = async (
   owner: string,
   repoNames: string[],
-): Promise<GithubRepo[]> => {
+): Promise<GithubResponse> => {
   try {
     const promises = repoNames.map((repo) => fetchRepoDetails(owner, repo));
     const results = await Promise.all(promises);
-    return results.filter((repo): repo is GithubRepo => repo !== null);
-  } catch (error) {
-    console.error(`Error fetching multiple repos for ${owner}:`, error);
-    return [];
+
+    const isRateLimited = results.some((r) => r.isRateLimited);
+    const data = results
+      .map((r) => r.data)
+      .filter((repo): repo is GithubRepo => repo !== null);
+
+    return {
+      data,
+      isRateLimited,
+      error: isRateLimited ? 'Rate limit exceeded' : undefined,
+    };
+  } catch (error: any) {
+    console.error(
+      `Error fetching multiple repos for ${owner}:`,
+      error.message || error,
+    );
+    return { data: [], error: error.message };
   }
 };

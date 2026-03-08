@@ -4,7 +4,6 @@ import { BorderBeam } from '@/components/magicui/border-beam';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 import Logo from '../logo/Logo';
-import { ModeToggle } from '../ModeToggle';
 import { LargeNavLinks } from './utils/LargeNavLinks';
 import { MobileNavDropdown } from './utils/MobileNavDropdown';
 
@@ -54,9 +53,6 @@ export default function Navbar() {
 
           {/* Mobile Navigation: Render dropdown for mobile devices */}
           {isMobile && <MobileNavDropdown />}
-
-          {/* Mode Toggle */}
-          <ModeToggle />
         </div>
 
         <BorderBeam duration={40} size={100} />

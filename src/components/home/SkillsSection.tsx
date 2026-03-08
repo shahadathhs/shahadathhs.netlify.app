@@ -2,7 +2,6 @@
 
 import { cn } from '@/lib/utils';
 import {
-  IconCone2,
   IconDatabase,
   IconLanguage,
   IconPackage,
@@ -20,17 +19,17 @@ import { skills } from '@/constant/skillsData';
 export default function SkillsSection() {
   const iconMap: Record<string, React.ReactNode> = {
     Languages: <IconLanguage className="h-8 w-8" />,
-    Backend: <IconServer className="h-8 w-8" />,
+    'Backend Frameworks': <IconServer className="h-8 w-8" />,
     Databases: <IconDatabase className="h-8 w-8" />,
     'ORMs & ODMs': <IconStackFront className="h-8 w-8" />,
-    Authentication: <IconTestPipe className="h-8 w-8" />,
-    'API Testing': <IconTestPipe className="h-8 w-8" />,
-    'API Documentation': <IconTerminal2 className="h-8 w-8" />,
+    'Real-time & Queues': <IconTerminal2 className="h-8 w-8" />,
+    'API Architecture': <IconServer className="h-8 w-8" />,
+    Testing: <IconTestPipe className="h-8 w-8" />,
+    'DevOps & Cloud': <IconTerminal2 className="h-8 w-8" />,
     'VCS & CI/CD': <IconPackage className="h-8 w-8" />,
-    Containerization: <IconCone2 className="h-8 w-8" />,
-    'Package Manager': <IconPackage className="h-8 w-8" />,
-    'Monorepo Tools': <IconPackage className="h-8 w-8" />,
-    'Dev Tools': <IconTools className="h-8 w-8" />,
+    'Web Servers': <IconServer className="h-8 w-8" />,
+    'Package Managers': <IconPackage className="h-8 w-8" />,
+    'Development Tools': <IconTools className="h-8 w-8" />,
   };
 
   return (
@@ -41,11 +40,11 @@ export default function SkillsSection() {
       <section className="w-full bg-white dark:bg-neutral-950 py-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           {/* Header Block */}
-          <div className="mb-10 flex flex-col md:items-center md:text-center">
-            <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl mx-auto">
+          <div className="mb-10 flex flex-col max-w-4xl">
+            <h2 className="text-4xl mb-4 font-bold dark:text-white text-black">
               Technical Skills
             </h2>
-            <p className="mt-2 text-neutral-700 dark:text-neutral-300 text-base max-w-2xl mx-auto">
+            <p className="mt-2 text-neutral-700 dark:text-neutral-300 max-w-2xl text-base">
               I always look forward to continuous learning and improving myself.
               Here&apos;s a snapshot of the tools and technologies I work with.
             </p>

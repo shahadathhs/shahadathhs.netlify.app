@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
-import { ThemeProvider } from '@/components/ui/theme-provider';
 import Navbar from '@/components/shared/nav/Navbar';
 import Footer from '@/components/shared/Footer';
 import ScrollToTop from '@/components/shared/ScrollToTop';
@@ -28,24 +27,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Toaster />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main className="container mx-auto px-2 lg:px-4 min-h-screen">
-            <Navbar />
-            {children}
-            <Footer />
-          </main>
-          <ScrollToTop />
-        </ThemeProvider>
+        <main className="container mx-auto max-w-6xl px-2 lg:px-4 min-h-screen">
+          <Navbar />
+          {children}
+          <Footer />
+        </main>
+        <ScrollToTop />
       </body>
     </html>
   );

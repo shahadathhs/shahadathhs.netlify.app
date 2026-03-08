@@ -16,9 +16,4 @@ export const socialLinks = [
     href: 'https://github.com/shahadathhs',
     icon: Github,
   },
-  // {
-  //   name: 'Facebook',
-  //   href: 'https://web.facebook.com/shahadathhs',
-  //   icon: Facebook,
-  // },
 ];
