@@ -51,10 +51,10 @@ export default function ProjectSection() {
           {/* Header Block */}
           <div className="flex flex-col md:items-center md:text-center mb-10 gap-4">
             <div>
-              <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl mx-auto">
+              <h2 className="text-4xl mb-4 font-bold dark:text-white text-black  max-w-4xl mx-auto">
                 Open Source Projects
               </h2>
-              <p className="mt-2 text-neutral-700 dark:text-neutral-300 text-base max-w-2xl mx-auto">
+              <p className="mt-2 text-neutral-700 dark:text-neutral-300  text-base max-w-2xl mx-auto">
                 A collection of my recent backend tools, infrastructure
                 templates, and full-stack experiments.
               </p>

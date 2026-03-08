@@ -42,10 +42,10 @@ export default function SkillsSection() {
         <div className="max-w-7xl mx-auto">
           {/* Header Block */}
           <div className="mb-10 flex flex-col md:items-center md:text-center">
-            <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl mx-auto">
+            <h2 className="text-4xl mb-4 font-bold dark:text-white text-black  max-w-4xl mx-auto">
               Technical Skills
             </h2>
-            <p className="mt-2 text-neutral-700 dark:text-neutral-300 text-base max-w-2xl mx-auto">
+            <p className="mt-2 text-neutral-700 dark:text-neutral-300  text-base max-w-2xl mx-auto">
               I always look forward to continuous learning and improving myself.
               Here&apos;s a snapshot of the tools and technologies I work with.
             </p>

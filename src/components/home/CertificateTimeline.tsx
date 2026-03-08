@@ -19,10 +19,10 @@ export default function CertificateTimeline() {
           {/* Header Block */}
           <div className="flex flex-col md:items-center md:text-center mb-16">
             <div>
-              <h2 className="text-4xl mb-4 font-bold text-black dark:text-white max-w-4xl mx-auto">
+              <h2 className="text-4xl mb-4 font-bold dark:text-white text-black  max-w-4xl mx-auto">
                 Certifications
               </h2>
-              <p className="mt-2 text-neutral-700 dark:text-neutral-300 text-base max-w-2xl mx-auto">
+              <p className="mt-2 text-neutral-700 dark:text-neutral-300  text-base max-w-2xl mx-auto">
                 A collection of professional certifications and courses that
                 have helped me deepen my knowledge and master new technologies.
               </p>

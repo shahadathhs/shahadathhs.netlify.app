@@ -18,7 +18,7 @@ export default function HeroSectionLamp() {
           ease: 'easeInOut',
         }}
         className="mt-4 bg-gradient-to-br from-slate-300 to-slate-500 
-      py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-white md:text-5xl"
+      py-4 bg-clip-text text-center text-4xl font-medium tracking-tight dark:text-white text-black md:text-5xl"
       >
         Hi, I am
       </motion.h1>
@@ -32,7 +32,7 @@ export default function HeroSectionLamp() {
           ease: 'easeInOut',
         }}
         className="mt-2 bg-gradient-to-br from-slate-300 to-slate-500 
-      py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-white md:text-5xl"
+      py-4 bg-clip-text text-center text-4xl font-medium tracking-tight dark:text-white text-black md:text-5xl"
       >
         Shahadath Hossen Sajib
       </motion.h1>
@@ -45,7 +45,7 @@ export default function HeroSectionLamp() {
           duration: 3.1,
           ease: 'easeInOut',
         }}
-        className="mt-2 py-4 text-center text-4xl font-medium tracking-tight text-white md:text-5xl"
+        className="mt-2 py-4 text-center text-4xl font-medium tracking-tight dark:text-white text-black md:text-5xl"
       >
         <Typewriter
           words={['Junior Backend Developer', 'MERN Stack Developer']}
