@@ -67,7 +67,9 @@ export default function ProjectSection() {
     loadRepos();
   }, []);
 
-  console.error(error, 'error in project section');
+  if (error) {
+    console.error(error, 'error in project section');
+  }
 
   return (
     <div

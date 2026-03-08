@@ -58,7 +58,6 @@ export const Timeline = ({ data }: TimelineProps) => {
               isActive={activeIndex === index}
               setActive={() => setActiveIndex(index)}
               clearActive={() => setActiveIndex(null)}
-              isEven={index % 2 === 0}
             />
           ))}
         </div>
@@ -73,7 +72,6 @@ interface TimelineEntryProps {
   isActive: boolean;
   setActive: () => void;
   clearActive: () => void;
-  isEven: boolean;
 }
 
 const TimelineEntryComponent = ({
@@ -82,7 +80,6 @@ const TimelineEntryComponent = ({
   isActive,
   setActive,
   clearActive,
-  isEven,
 }: TimelineEntryProps) => {
   const variants = {
     hidden: { opacity: 0, y: 20 },
@@ -95,7 +92,6 @@ const TimelineEntryComponent = ({
       },
     }),
   };
-  console.log(isEven);
 
   return (
     <motion.div
