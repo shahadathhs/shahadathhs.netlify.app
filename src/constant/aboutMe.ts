@@ -1,31 +1,50 @@
-import { Database, Server, ShieldCheck, User } from 'lucide-react';
+import { Code2, Cpu, Database, Layers, Rocket, Zap } from 'lucide-react';
 
 export const aboutMeBio = `
-Hi, I'm Shahadath Hossen Sajib — a backend developer passionate about building clean, scalable, and maintainable systems. I currently work at a service-based company where I develop APIs and backend features using NestJS, Drizzle ORM, Prisma, and PostgreSQL. Starting my journey with the MERN stack, I gradually found my interest in the backend ecosystem — working with databases, designing APIs, and focusing on performance and clean architecture. Outside of work, I'm actively learning advanced NestJS patterns, PostgreSQL internals, and data structures & algorithms to sharpen my problem-solving and system design skills. I also love working on side projects that challenge me and help me grow as a developer. I'm always eager to explore new technologies, improve my craft, and collaborate on meaningful products.
+I’m a Backend Developer with strong experience in building scalable, secure, and high-performance backend systems using Node.js, NestJS, Python, FastAPI, and TypeScript.
+
+My work focuses on designing robust RESTful APIs, managing databases such as PostgreSQL, MongoDB, and Redis, and building real-time features, background processing, and AI-powered services. I take pride in writing maintainable, production-ready code and building systems that scale reliably.
+
+I specialize in microservices architecture, developing large, configurable backend systems that handle complex workflows, dynamic features, and multi-module operations. My experience spans multi-language codebases, cross-functional collaboration, and delivering high-impact backend solutions.
+
+On the DevOps side, I work with Docker, CI/CD pipelines (GitHub Actions), and AWS (EC2 & S3) to deploy and operate services efficiently. I’m also familiar with Nginx and Caddy for reverse proxy and server configuration.
 `;
 
 export const features = [
   {
-    title: 'API Design',
-    description: 'Creating RESTful APIs for seamless data exchange.',
-    icon: Server,
+    title: 'Node.js Development',
+    description:
+      'Building scalable backend services using Node.js and NestJS framework.',
+    icon: Rocket,
   },
   {
-    title: 'Robust Databases',
+    title: 'Python Engineering',
     description:
-      'Crafting optimized schemas and queries for performant data storage.',
+      'Building high-performance APIs and tools using Python and FastAPI.',
+    icon: Code2,
+  },
+  {
+    title: 'Database Design',
+    description:
+      'Designing optimized schemas for PostgreSQL, MongoDB, and Redis.',
     icon: Database,
   },
   {
-    title: 'Security First',
+    title: 'Microservices',
     description:
-      'Implementing authentication, authorization, and secure API practices.',
-    icon: ShieldCheck,
+      'Crafting modular architectures for complex and large-scale systems.',
+    icon: Layers,
   },
   {
-    title: 'Collaborative Excellence',
+    title: 'Real-time & AI',
     description:
-      'Thriving in team environments with clean code and peer reviews.',
-    icon: User,
+      'Implementing Socket.IO features and advanced AI-powered automation.',
+    icon: Zap,
+  },
+  {
+    title: 'DevOps & Cloud',
+    description:
+      'Deploying robust systems using Docker, AWS, and CI/CD pipelines.',
+    icon: Cpu,
   },
 ];

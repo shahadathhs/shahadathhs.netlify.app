@@ -2,7 +2,6 @@
 
 import { cn } from '@/lib/utils';
 import {
-  IconCone2,
   IconDatabase,
   IconLanguage,
   IconPackage,
@@ -20,17 +19,17 @@ import { skills } from '@/constant/skillsData';
 export default function SkillsSection() {
   const iconMap: Record<string, React.ReactNode> = {
     Languages: <IconLanguage className="h-8 w-8" />,
-    Backend: <IconServer className="h-8 w-8" />,
+    'Backend Frameworks': <IconServer className="h-8 w-8" />,
     Databases: <IconDatabase className="h-8 w-8" />,
     'ORMs & ODMs': <IconStackFront className="h-8 w-8" />,
-    Authentication: <IconTestPipe className="h-8 w-8" />,
-    'API Testing': <IconTestPipe className="h-8 w-8" />,
-    'API Documentation': <IconTerminal2 className="h-8 w-8" />,
+    'Real-time & Queues': <IconTerminal2 className="h-8 w-8" />,
+    'API Architecture': <IconServer className="h-8 w-8" />,
+    Testing: <IconTestPipe className="h-8 w-8" />,
+    'DevOps & Cloud': <IconTerminal2 className="h-8 w-8" />,
     'VCS & CI/CD': <IconPackage className="h-8 w-8" />,
-    Containerization: <IconCone2 className="h-8 w-8" />,
-    'Package Manager': <IconPackage className="h-8 w-8" />,
-    'Monorepo Tools': <IconPackage className="h-8 w-8" />,
-    'Dev Tools': <IconTools className="h-8 w-8" />,
+    'Web Servers': <IconServer className="h-8 w-8" />,
+    'Package Managers': <IconPackage className="h-8 w-8" />,
+    'Development Tools': <IconTools className="h-8 w-8" />,
   };
 
   return (

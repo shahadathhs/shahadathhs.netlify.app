@@ -1,10 +1,10 @@
 export const PINNED_REPOS = [
+  'systemix',
+  'local-mail-stack',
+  'rag',
   'vortex',
-  'knowledge-capsule-api',
   'barisathi',
   'bike-shop',
-  'generate-password',
-  'ecommerce-inventory-api',
   'nestjs-prisma-aws-starter',
   'turborepo-starter',
 ];
