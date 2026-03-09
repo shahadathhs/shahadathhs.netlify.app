@@ -36,7 +36,7 @@ export const experienceData: TimelineEntry[] = [
     ],
   },
   {
-    title: 'May 2025 - Jul 2025',
+    title: 'May 2025 - Jun 2025',
     company: 'Career Break',
     location: 'Chattogram, Bangladesh',
     designation: 'Backend Engineering Transition',
