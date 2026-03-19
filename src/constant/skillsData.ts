@@ -6,30 +6,19 @@ export const skills = [
   },
   { title: 'Databases', description: ['PostgreSQL', 'MongoDB', 'Redis'] },
   {
-    title: 'ORMs & ODMs',
-    description: ['Prisma', 'Drizzle', 'Mongoose'],
+    title: 'Real-time',
+    description: ['Socket.IO', 'WebRTC'],
   },
-  { title: 'Real-time & Queues', description: ['Socket.IO', 'BullMQ'] },
   {
     title: 'API Architecture',
     description: ['REST', 'Microservices', 'Webhooks'],
   },
-  { title: 'Testing', description: ['Jest', 'Supertest', 'Vitest'] },
   {
     title: 'DevOps & Cloud',
-    description: ['Docker', 'AWS (EC2, S3)', 'DigitalOcean'],
+    description: ['Docker', 'AWS (EC2, S3)', 'GitHub Actions'],
   },
   {
-    title: 'VCS & CI/CD',
-    description: ['Git', 'GitHub', 'GitHub Actions'],
-  },
-  { title: 'Web Servers', description: ['Nginx', 'Caddy'] },
-  {
-    title: 'Package Managers',
-    description: ['npm', 'pnpm', 'pip'],
-  },
-  {
-    title: 'Development Tools',
-    description: ['VS Code', 'Postman', 'Swagger', 'Warp'],
+    title: 'Web Servers',
+    description: ['Nginx', 'Caddy'],
   },
 ];
