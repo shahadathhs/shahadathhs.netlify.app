@@ -57,7 +57,7 @@ I specialize in **microservices architecture**, developing large, configurable b
 - **Portfolio**: [shahadathhs.shahadathhs.workers.dev](https://shahadathhs.shahadathhs.workers.dev)
 - **LinkedIn**: [in/shahadathhs](https://www.linkedin.com/in/shahadathhs/)
 - **Twitter**: [@shahadathhs](https://x.com/shahadathhs)
-- **Email**: [shahadathhs.dev@gmail.com](mailto:shahadathhs.dev@gmail.com)
+- **Email**: [shahadathhossensajib732@gmail.com](mailto:shahadathhossensajib732@gmail.com)
 
 ---
 
